@@ -1,5 +1,5 @@
 const path = require('path')
-
+const webpack = require('webpack');
 const merge = require('webpack-merge')
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -28,7 +28,24 @@ const common = {
  }
  
  if(TARGET === 'start' || !TARGET) {
-    module.exports = merge(common, {});
+    module.exports = merge(common, {
+        devtool: 'eval-source-map',
+        devServer: {
+            contentBase: PATHS.build,
+            historyApiFallback: true,
+            hot: true,
+            inline: true,
+            progress: true,
+            
+            stats: 'errors-only',
+            
+            host: process.env.HOST,
+            port: process.env.PORT || 3000
+        },
+        plugins: [
+            new webpack.HotModuleReplacementPlugin()
+        ]
+    });
  }
     
  if(TARGET === 'build') {
