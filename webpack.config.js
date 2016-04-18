@@ -1,6 +1,8 @@
 const path = require('path')
 const webpack = require('webpack');
-const merge = require('webpack-merge')
+const merge = require('webpack-merge');
+
+const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
@@ -43,7 +45,8 @@ const common = {
             port: process.env.PORT || 3000
         },
         plugins: [
-            new webpack.HotModuleReplacementPlugin()
+            new webpack.HotModuleReplacementPlugin(),
+            new NpmInstallPlugin({save: true})
         ]
     });
  }
