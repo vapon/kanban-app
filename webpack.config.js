@@ -11,9 +11,9 @@ const PATHS = {
 };
 
 const common = {
-    entry: {
-        app: PATHS.app
-    },  
+    entry: [
+        PATHS.app
+    ],  
    output: {
        path: PATHS.build,
        filename: 'bundle.js'
@@ -44,7 +44,7 @@ const common = {
             inline: true,
             progress: true,
             
-            stats: 'errors-only',
+            // stats: 'errors-only',
             
             host: process.env.HOST,
             port: process.env.PORT || 3000
