@@ -2,6 +2,6 @@
   "presets": [
      "es2015",
      "react",
-     "survive-kanban"
+     "survivejs-kanban"
   ]
 }

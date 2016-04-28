@@ -18,6 +18,9 @@ const common = {
        path: PATHS.build,
        filename: 'bundle.js'
    },
+   resolve: {
+    extensions: ["", ".jsx", ".js"],
+   },
    module: {
        loaders: [
          {
@@ -44,7 +47,7 @@ const common = {
             inline: true,
             progress: true,
             
-            // stats: 'errors-only',
+            stats: 'info',
             
             host: process.env.HOST,
             port: process.env.PORT || 3000
