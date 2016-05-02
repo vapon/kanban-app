@@ -1,6 +1,10 @@
 {
 	"compilerOptions": {
+		"experimentalDecorators": true,
 		"target": "ES6",
-		"module": "commonjs"
-	}
+		"module": "system"
+	},
+	"exclude": [
+    "node_module"
+  ]
 }
