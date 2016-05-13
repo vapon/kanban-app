@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'node-uuid';
 
-import Note from './Note.jsx';
+import Notes from './Notes.jsx';
 
 export default class App extends React.Component {
     
@@ -10,23 +10,23 @@ export default class App extends React.Component {
         
         this.state = {
             notes : [
-            {
-                id: uuid.v4(),
-                task: 'Learn Webpack'
-            },
-            {
-                id: uuid.v4(),
-                task: 'Learn React'
-            },
-            {
-                id: uuid.v4(),
-                task: 'Learn laundry'
-            }          
+                {
+                    id: uuid.v4(),
+                    task: 'Learn Webpack'
+                },
+                {
+                    id: uuid.v4(),
+                    task: 'Learn React'
+                },
+                {
+                    id: uuid.v4(),
+                    task: 'Learn laundry'
+                }          
             ] 
         };
     }
     
-    addNote = () => {
+    addNote = () =>     {
         this.setState({
             notes: this.state.notes.concat([{
                 id: uuid.v4(),
@@ -41,14 +41,9 @@ export default class App extends React.Component {
        
        return (
            <div>
-             <ul>
-               {notes.map(note => 
-                //  <li key={note.id}>{note.task}</li>
-                <li key={note.id}>
-                    <Note task={note.task} />
-                </li>
-               )} 
-             </ul>
+           
+            <button onClick={this.addNote}>+</button>
+            <Notes notes={notes} />
            </div>
        );       
     }
