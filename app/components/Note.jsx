@@ -18,6 +18,16 @@ export default class Note extends React.Component {
         return this.renderNote();
     }
     
+    renderNote = () => {
+      return <div onClick={this.edit}>{this.props.task}</div>  
+    };
+    
+    edit = () => {
+      this.setState({
+          editing: true
+      });  
+    };
+    
     renderEdit = () => {
         return <input type="text" 
           ref={
@@ -26,7 +36,7 @@ export default class Note extends React.Component {
               null
           }
           autoFocus = {true}
-          defaultValue = {thi.props.task}
+          defaultValue = {this.props.task}
           onBlur = {this.finishEdit}
           onKeyPress = {this.checkEnter} />;
           
@@ -43,12 +53,10 @@ export default class Note extends React.Component {
         const value  = e.target.value;
         
         if(this.props.onEdit) {
-            this.props.onEdit(value);
-            
+            this.props.onEdit(value);           
         }        
         this.setState({
             editing: false
         });
-    }
-    
+    }   
 }
